@@ -5,6 +5,8 @@ const dotenv = require('dotenv')
 const authRoute = require('./routes/auth')
 const userRoute = require('./routes/user')
 const productRoute = require('./routes/product')
+const cartRoute = require('./routes/cart')
+
 //dotenv config
 dotenv.config()
 
@@ -22,5 +24,6 @@ app.get('/',(req,res)=>{
 app.use('/admin',authRoute)
 app.use('/user',userRoute)
 app.use('/product',productRoute)
+app.use('/cart',cartRoute)
 //app listening
 app.listen(process.env.PORT,console.log("Server is running at",process.env.PORT))
