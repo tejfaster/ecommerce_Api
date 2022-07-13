@@ -2,7 +2,9 @@ const express = require('express')
 const bodyparser = require('body-parser')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
-const userRoute = require('./routes/auth')
+const authRoute = require('./routes/auth')
+const userRoute = require('./routes/user')
+const productRoute = require('./routes/product')
 //dotenv config
 dotenv.config()
 
@@ -17,6 +19,8 @@ app.use(bodyparser.json())
 app.get('/',(req,res)=>{
     res.send('<h1>Hello world</h1>')
 })
-app.use('/admin',userRoute)
+app.use('/admin',authRoute)
+app.use('/user',userRoute)
+app.use('/product',productRoute)
 //app listening
 app.listen(process.env.PORT,console.log("Server is running at",process.env.PORT))
